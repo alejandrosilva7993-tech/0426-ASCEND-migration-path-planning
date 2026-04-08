@@ -209,7 +209,11 @@ body{font-family:var(--ff);background:linear-gradient(160deg,#dce9f7 0%,#b8cfe5 
 .field label{display:block;font-size:11px;font-weight:700;color:var(--s600);margin-bottom:4px;letter-spacing:0}
 .field input{width:100%;padding:8px 10px;border:1px solid var(--s300);border-radius:var(--r6);font-size:13px;font-family:var(--ff)}
 .field input:focus{outline:none;border-color:var(--blue-400);box-shadow:0 0 0 2px rgba(59,130,246,.15)}
-.ssl-row{display:flex;align-items:center;gap:8px;margin-bottom:12px;font-size:13px;font-weight:600}
+.tls-legend{display:flex;align-items:flex-start;gap:10px;margin-bottom:12px;padding:10px 12px;background:var(--s50);border:1px solid var(--s200);border-radius:var(--r6);
+  font-size:12px;line-height:1.45}
+.tls-legend i{color:var(--blue-600);font-size:14px;margin-top:2px;flex-shrink:0;line-height:1}
+.tls-legend strong{color:var(--s700);font-weight:800}
+.tls-legend__body{font-weight:400;color:var(--s600)}
 .conn-actions{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:12px}
 .conn-status{margin-top:12px;padding:10px 12px;border-radius:var(--r6);font-size:13px;font-weight:600;display:flex;align-items:flex-start;gap:8px;line-height:1.4}
 .conn-status.idle{background:var(--s50);color:var(--s500);border:1px solid var(--s200)}
@@ -468,11 +472,13 @@ body.chat-open .steps-band{width:100%!important;max-width:100%!important;overflo
     <div class="conn-grid" role="group" aria-label="Source and target database connections">
       <div class="conn-card">
         <h4><span class="acc" aria-hidden="true"></span><i class="pi pi-database"></i> Source (WMS legacy)</h4>
-        <div class="field"><label for="srcName">Name</label><input id="srcName" value="BY-WMS-LEGACY-PROD" autocomplete="off"></div>
+        <div class="field"><label for="srcName">Environment</label><input id="srcName" value="BY-WMS-LEGACY-PROD" autocomplete="off"></div>
         <div class="field"><label for="srcHost">Host</label><input id="srcHost" value="legacy-db.acme.internal" autocomplete="off"></div>
         <div class="field"><label for="srcPort">Port</label><input id="srcPort" value="1433" autocomplete="off"></div>
         <div class="field"><label for="srcDb">Database / instance</label><input id="srcDb" value="WMS_CORE_2019" autocomplete="off"></div>
-        <label class="ssl-row"><input type="checkbox" id="srcSsl" checked> TLS enabled</label>
+        <div class="tls-legend" role="note"><i class="pi pi-shield" aria-hidden="true"></i>
+          <span><strong>TLS required.</strong> <span class="tls-legend__body">Transport Layer Security encrypts client–database traffic end-to-end.</span></span>
+        </div>
         <div class="conn-actions">
           <button type="button" class="btn-gen" style="padding:8px 14px;font-size:13px" id="btnTestSrc">Test Connection</button>
         </div>
@@ -480,11 +486,13 @@ body.chat-open .steps-band{width:100%!important;max-width:100%!important;overflo
       </div>
       <div class="conn-card">
         <h4><span class="acc" aria-hidden="true"></span><i class="pi pi-database"></i> Target (destination WMS)</h4>
-        <div class="field"><label for="tgtName">Name</label><input id="tgtName" value="BY-COGNITIVE-QA" autocomplete="off"></div>
+        <div class="field"><label for="tgtName">Environment</label><input id="tgtName" value="BY-COGNITIVE-QA" autocomplete="off"></div>
         <div class="field"><label for="tgtHost">Host</label><input id="tgtHost" value="cognitive-db.acme.internal" autocomplete="off"></div>
         <div class="field"><label for="tgtPort">Port</label><input id="tgtPort" value="1433" autocomplete="off"></div>
         <div class="field"><label for="tgtDb">Database / instance</label><input id="tgtDb" value="WMS_COG_2026" autocomplete="off"></div>
-        <label class="ssl-row"><input type="checkbox" id="tgtSsl" checked> TLS enabled</label>
+        <div class="tls-legend" role="note"><i class="pi pi-shield" aria-hidden="true"></i>
+          <span><strong>TLS required.</strong> <span class="tls-legend__body">Transport Layer Security encrypts client–database traffic end-to-end.</span></span>
+        </div>
         <div class="conn-actions">
           <button type="button" class="btn-gen" style="padding:8px 14px;font-size:13px" id="btnTestTgt">Test Connection</button>
         </div>
